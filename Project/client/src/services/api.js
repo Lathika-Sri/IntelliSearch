@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: `${import.meta.env.VITE_API_URL || ''}/api`,
   headers: {
-    'Content-Type': 'application/json',
-    'x-admin-key': 'admin-secret-key-123'
+    'Content-Type': 'application/json'
   }
 });
+
 
 // Search APIs
 export const fetchSuggestions = async (q, limit = 5, sessionId = null) => {
