@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.015em;
+    background-color: #fafaf9;
+    color: #111827;
+  }
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Authentic Graph Paper Grid Background */
+.bg-graph-grid {
+  background-color: #fafaf9;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.055) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.bg-graph-grid-dense {
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* Sketch & Editorial Notebook Elements */
+.sketch-card {
+  background-color: #ffffff;
+  border: 2px solid #111827;
+  box-shadow: 4px 4px 0px 0px #111827;
+}
+
+.sketch-card-sm {
+  background-color: #ffffff;
+  border: 1.5px solid #111827;
+  box-shadow: 2px 2px 0px 0px #111827;
+}
+
+.sketch-card-hover {
+  transition: all 0.15s ease-out;
+}
+.sketch-card-hover:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px 0px #111827;
+}
+
+.sketch-button-yellow {
+  background-color: #FFE600;
+  color: #111827;
+  font-weight: 700;
+  border: 2px solid #111827;
+  box-shadow: 3px 3px 0px 0px #111827;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sketch-button-yellow:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #111827;
+  background-color: #fde047;
+}
+.sketch-button-yellow:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #111827;
+}
+
+.sketch-button-white {
+  background-color: #ffffff;
+  color: #111827;
+  font-weight: 600;
+  border: 2px solid #111827;
+  box-shadow: 3px 3px 0px 0px #111827;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sketch-button-white:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px 0px #111827;
+  background-color: #f8fafc;
+}
+.sketch-button-white:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px 0px #111827;
+}
+
+/* Realistic Highlighter Stroke Effects */
+.marker-highlight {
+  background: linear-gradient(104deg, rgba(255, 230, 0, 0) 0.5%, #FFE600 2.5%, #FFE600 96%, rgba(255, 230, 0, 0) 99%);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.marker-highlight-soft {
+  background-color: #FEF08A;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+/* Handwriting annotation styles */
+.handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  color: #111827;
+}
+
+/* Custom crisp ink scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-left: 1px solid #e2e8f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border: 1.5px solid #f1f5f9;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
