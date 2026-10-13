@@ -8,8 +8,34 @@ const api = axios.create({
   }
 });
 
+// Request interceptor to attach x-admin-key header
+api.interceptors.request.use((config) => {
+  const adminKey =
+    localStorage.getItem('intellisearch_admin_key') ||
+    import.meta.env.VITE_ADMIN_API_KEY ||
+    'adminkey123';
 
+  if (adminKey) {
+    config.headers['x-admin-key'] = adminKey;
+  }
+  return config;
+});
 
+export const getAdminApiKey = () => {
+  return (
+    localStorage.getItem('intellisearch_admin_key') ||
+    import.meta.env.VITE_ADMIN_API_KEY ||
+    'adminkey123'
+  );
+};
+
+export const setAdminApiKey = (key) => {
+  if (key && key.trim()) {
+    localStorage.setItem('intellisearch_admin_key', key.trim());
+  } else {
+    localStorage.removeItem('intellisearch_admin_key');
+  }
+};
 // Search APIs
 export const fetchSuggestions = async (q, limit = 5, sessionId = null) => {
   const res = await api.get('/search/suggestions', {

@@ -10,13 +10,15 @@ const {
 
 const app = express();
 
+const clientUrls = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(',').map((u) => u.trim().replace(/\/$/, ''))
+  : [];
+
 const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:3000',
   'https://intelli-search-zeta.vercel.app',
-  ...(process.env.CLIENT_URL
-    ? [process.env.CLIENT_URL.replace(/\/$/, '')]
-    : [])
+  ...clientUrls
 ];
 
 app.use(helmet());
@@ -29,6 +31,15 @@ app.use(cors({
       process.env.NODE_ENV !== 'production'
     ) {
       return callback(null, true);
+    }
+
+    try {
+      const hostname = new URL(origin).hostname;
+      if (hostname.endsWith('.vercel.app')) {
+        return callback(null, true);
+      }
+    } catch {
+      // ignore URL parsing error
     }
 
     return callback(new Error('Blocked by CORS policy'));

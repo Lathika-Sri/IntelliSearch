@@ -127,7 +127,7 @@ describe('API Endpoints Testing', () => {
     test('should fetch paginated terms list', async () => {
       const res = await request(app)
         .get('/api/admin/terms?page=1&limit=5')
-        .set('x-admin-key', process.env.ADMIN_API_KEY)
+        .set('x-admin-key', process.env.ADMIN_API_KEY || 'adminkey123')
         .expect(200);
 
       expect(res.body.success).toBe(true);
